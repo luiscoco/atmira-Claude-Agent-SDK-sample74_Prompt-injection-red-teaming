@@ -1,0 +1,168 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+python-lab/
+.npm-cache/
+realtime-lab/
+saas-lab/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Concept 3: the agent's working folder (recreated by the server)
+sandbox/
+
+# Concept 17: the folders the agent edits and rewinds (recreated by the server)
+checkpoint-lab/
+
+# Concept 18: the folders the sandboxed Bash commands run in (recreated by the server)
+sandbox-lab/
+
+# Concept 19: the cwd of the session runs (its transcripts are in ~/.claude/projects/, not here)
+session-lab/
+
+# Concept 20: the cwd of the hook runs (recreated by the server)
+hooks-lab/
+
+# Concept 22: the fake home (user CLAUDE.md) and the auto-memory folder (recreated by the server)
+memory-lab/
+
+# Concept 23: the fake CLAUDE_CONFIG_DIR, the agent's cwd and the plugin copy that /reload edits (recreated by the server)
+plugins-lab/
+
+# Concept 24: the SDK harness's cwd, with the returns-policy file its built-in tools read (recreated by the server)
+harness-lab/
+
+# Concept 25: the fake CLAUDE_CONFIG_DIR where too-large tool results are saved (recreated by the server)
+compact-lab/
+
+# Concept 26: the live session's cwd (slow.mjs, notes.txt) and its fake CLAUDE_CONFIG_DIR (recreated by the server)
+control-lab/
+
+# Concept 27: the agent's cwd (slow.mjs), its fake CLAUDE_CONFIG_DIR and the background output files (recreated by the server)
+bg-lab/
+
+# Concept 28: the agent's cwd (a.txt, b.txt) and its fake CLAUDE_CONFIG_DIR with the transcripts it resumes (recreated by the server)
+errors-lab/
+
+# Concept 29: the agent's cwd with the generated images and PDF, and its fake CLAUDE_CONFIG_DIR (recreated by the server)
+files-lab/
+
+# Concept 30: one folder per run (prices.csv and the files the agent writes) and the fake CLAUDE_CONFIG_DIR with the task lists (recreated by the server)
+todo-lab/
+
+# Concept 31: one empty folder per run (the files the agent writes) and the fake CLAUDE_CONFIG_DIR (recreated by the server)
+ask-lab/
+
+# Concept 32: one copy of the tiny project per run (cart.js, README.md) and the fake CLAUDE_CONFIG_DIR with the plan files (recreated by the server)
+plan-lab/
+
+# Concept 33: one bookings file per run (rooms.json) and the fake CLAUDE_CONFIG_DIR (recreated by the server)
+elicit-lab/
+
+# Concept 34: one copy of styles-project per run and the fake CLAUDE_CONFIG_DIR with the user style (recreated by the server)
+style-lab/
+
+# Concept 35: the store (a folder of JSONL files), the two fake machines' CLAUDE_CONFIG_DIRs and the cwd (recreated by the server)
+store-lab/
+
+# Concept 36: the host and box folders (work + CLAUDE_CONFIG_DIR) and the debug logs (recreated by the server)
+spawn-lab/
+
+# Concept 37: one folder per session (the files the agent writes, .claude/settings.local.json) and the fake CLAUDE_CONFIG_DIR (recreated by the server)
+gate-lab/
+
+# Concept 38: one folder per session (the files the agent writes, a row's own settings.json) and the fake CLAUDE_CONFIG_DIR (recreated by the server)
+suggest-lab/
+
+# Concept 39: a git repo and two worktrees of it (the trusted checkout, a PR branch, a branch without .claude) and one folder per session (recreated by the server)
+config-root-lab/
+
+# Concept 40: the fake CLAUDE_CONFIG_DIR (its transcripts are the lab session and its forks) and the sessions' cwd (recreated by the server)
+drops-lab/
+
+# Concept 41: the CLAUDE_CONFIG_DIR shared by the old (2.1.141) and the new CLI, the sessions' cwd, the launcher's spawn logs (recreated by the server)
+v2-lab/
+
+# Concept 42: the agents' empty cwd and their fake CLAUDE_CONFIG_DIR (created by the server)
+web-lab/
+
+# Concept 43: the agents' empty cwd and one CLAUDE_CONFIG_DIR per lane (created by the server)
+remote-lab/
+
+# Concept 44: the agents' folders (notes.txt, the headers helper) and one CLAUDE_CONFIG_DIR per lane (created by the server)
+otel-lab/
+
+# Concept 45: the agents' folders (notes.txt, the credential files and scripts) and one CLAUDE_CONFIG_DIR per lane (created by the server)
+cloud-lab/
+
+# Concept 46: the agents' folders (notes.txt) and one CLAUDE_CONFIG_DIR per lane (created by the server)
+cache-lab/
+
+# Concept 47: the agents' folders (the region CSVs, inbox.txt) and one CLAUDE_CONFIG_DIR per lane (recreated by the server)
+orchestra-lab/
+
+# Concept 48: the red-team range (per-lane work/outside/config folders, canary .env and secret files) — recreated by the server
+security-lab/
+
+# Concept 49: the fixture repo, runner files (step summary, outputs) and one CLAUDE_CONFIG_DIR per run — recreated by the server
+deploy-lab/
+
+# Concept 50: the capstone database (db.json) and the agent workspace (policies/), recreated by the server
+capstone-lab/
+
+# Concept 52: every eval run (the committed baseline is evals/baseline.json, NOT ignored)
+eval-lab/
+
+# Lesson 53: isolated runs, raw CLI debug logs and redacted diagnostic bundles
+debug-lab/
+
+# Lesson 56: isolated live messaging sessions
+teams-lab/
+
+# Lesson 57: disposable Git repositories and retained run evidence
+worktrees-lab/
+
+# Lesson 58: the isolated CLAUDE_CONFIG_DIR used by the tool search measurements and live runs
+toolsearch-lab/
+
+# Lesson 59: the isolated CLAUDE_CONFIG_DIR used by the model routing runs, and the browser smoke output
+routing-lab/
+
+# Lesson 60: journals, the ledger, the session store, the worker's CLAUDE_CONFIG_DIR and the browser smoke output
+durable-lab/
+
+# Lesson 61: the inner agents' CLAUDE_CONFIG_DIRs (desk + support lead), their working folder and the browser smoke output
+agent-mcp-lab/
+
+# Lesson 62: isolated retrieval agent configuration and working directory
+retrieval-lab/
+
+database-lab/
+
+# Lesson 64: browser screenshots and isolated agent configuration
+browser-lab/
+
+# Lesson 65: isolated live agent configuration and working directory
+approval-lab/
+
+scheduled-lab/
+
+# Lesson 69: private SDK state and compiled extension host
+embedding-lab/
+ide-extension/runtime/*.js
+
+# Concept 71: the data-analysis agent's cwd and private CLAUDE_CONFIG_DIR
+analysis-lab/
+
+# Concept 72: per-session document workspaces (skill copy, specs, out/*.docx) and the private CLAUDE_CONFIG_DIR
+docgen-lab/
+
+# Concept 73: per-session git repositories (main, the PR branch, the review/ and fix/ worktrees) and the private CLAUDE_CONFIG_DIR
+prbot-lab/
+# Concept 74: the target agent's private CLAUDE_CONFIG_DIR
+redteam-lab/

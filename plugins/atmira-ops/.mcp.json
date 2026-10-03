@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "tickets": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/tickets.mjs"],
+      "env": {
+        "TICKETS_FILE": "${CLAUDE_PLUGIN_ROOT}/data/tickets.json",
+        "ATMIRA_TEAM": "${user_config.team}"
+      }
+    }
+  }
+}

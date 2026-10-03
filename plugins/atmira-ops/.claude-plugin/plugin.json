@@ -1,0 +1,14 @@
+{
+  "name": "atmira-ops",
+  "version": "2.1.0",
+  "description": "Atmira's ops toolkit: a stand-up command, a ticket reviewer agent, a ticket-format skill, audit hooks and a tickets MCP server.",
+  "author": { "name": "Atmira Lab" },
+  "userConfig": {
+    "team": {
+      "type": "string",
+      "title": "Team name",
+      "description": "The team the stand-up and the tickets belong to.",
+      "default": "Orbit"
+    }
+  }
+}

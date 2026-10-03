@@ -1,0 +1,5 @@
+{
+  "env": {
+    "LAB_LAYER": "flag (from settings-lab/flag-settings.json)"
+  }
+}

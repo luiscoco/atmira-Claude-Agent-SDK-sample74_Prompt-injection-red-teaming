@@ -1,0 +1,57 @@
+# Concept 49 — copy to .github/workflows/agent-review.yml in your repository.
+# A pull-request gate: the Agent SDK reviews the diff, annotates the PR, writes a job summary, and fails the check on
+# blocking findings. Add the API key as a repository secret named ANTHROPIC_API_KEY (Settings → Secrets → Actions).
+name: agent-review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Least privilege for the job token: the gate only reads code. (Annotations and the summary need no extra scopes.)
+permissions:
+  contents: read
+
+# A new push to the same PR cancels the previous review: no paying twice for an outdated diff.
+concurrency:
+  group: agent-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10            # the runner's own ceiling, above REVIEW_TIMEOUT_MS
+    # Pull requests from forks get no secrets; skip instead of failing for lack of a key.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0             # the diff needs the base branch history
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund   # installs the SDK AND the linux-x64 Claude Code binary for this runner
+
+      - name: Agent review
+        id: review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BASE_REF: origin/${{ github.base_ref }}
+          REVIEW_MODEL: haiku
+          REVIEW_MAX_TURNS: "6"
+          REVIEW_MAX_BUDGET_USD: "0.10"
+          REVIEW_TIMEOUT_MS: "300000"
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude   # ephemeral state, never the runner's home
+        run: node ci-kit/agent-review.mjs
+
+      # Outputs written to $GITHUB_OUTPUT are usable by later steps or jobs.
+      - name: Report
+        if: always()
+        # Through env, not ${{ }} inside the script: a "$" in front of a substituted value is expanded by bash.
+        env:
+          VERDICT: ${{ steps.review.outputs.verdict }}
+          ERRORS: ${{ steps.review.outputs.errors }}
+          COST_USD: ${{ steps.review.outputs.cost_usd }}
+        run: echo "verdict=$VERDICT errors=$ERRORS cost_usd=$COST_USD"

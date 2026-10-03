@@ -1,0 +1,2 @@
+# Verified against the Python API in this version; separate from the npm SDK.
+claude-agent-sdk==0.2.163

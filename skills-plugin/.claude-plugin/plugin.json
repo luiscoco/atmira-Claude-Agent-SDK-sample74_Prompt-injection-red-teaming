@@ -1,0 +1,5 @@
+{
+  "name": "atmira-tools",
+  "version": "1.0.0",
+  "description": "Shared Atmira skills, shipped as a plugin instead of living in one project."
+}

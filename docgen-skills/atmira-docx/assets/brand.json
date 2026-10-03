@@ -1,0 +1,17 @@
+{
+  "company": "Atmira Lab",
+  "fonts": { "heading": "Calibri Light", "body": "Calibri" },
+  "colors": {
+    "primary": "C96442",
+    "text": "1F1F1F",
+    "muted": "6B6B6B",
+    "rule": "E4E3DF",
+    "tableHeader": "F4E3DC",
+    "info": "EAF2FB",
+    "infoBorder": "2A78D6",
+    "warning": "FDF3E1",
+    "warningBorder": "D9A13B"
+  },
+  "classifications": ["Public", "Internal", "Confidential"],
+  "footer": "Atmira Lab"
+}

@@ -1,0 +1,43 @@
+# Concept 49 — the same idea with NO script: the Claude Code CLI in print mode (`claude -p`).
+# Handy for one-off jobs (triage a failing test, write release notes). For a gate with exit codes and annotations,
+# prefer agent-review.yml: the SDK gives you typed messages, hooks and full control of the exit code.
+name: claude-headless
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: What should Claude do?
+        default: Summarise the changes since the last tag as release notes.
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Claude (headless)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TASK: ${{ inputs.task }}   # through env: never paste ${{ inputs.* }} into a script (shell injection)
+        run: |
+          claude -p "$TASK" \
+            --output-format json \
+            --model haiku \
+            --permission-mode dontAsk \
+            --tools "Read,Grep,Glob,Bash" \
+            --allowedTools "Read,Grep,Glob,Bash(git log:*),Bash(git diff:*)" \
+            --max-turns 8 \
+            --max-budget-usd 0.20 \
+            --no-session-persistence \
+            > result.json
+          # --output-format json prints ONE result object: is_error/subtype decide the step's outcome.
+          jq -r '.result' result.json >> "$GITHUB_STEP_SUMMARY"
+          jq -e '.is_error == false' result.json > /dev/null

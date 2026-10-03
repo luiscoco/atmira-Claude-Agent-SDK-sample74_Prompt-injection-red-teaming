@@ -1,0 +1,7 @@
+[
+  { "id": 1, "title": "Design the login page", "done": true },
+  { "id": 2, "title": "Connect the payments API", "done": false },
+  { "id": 3, "title": "Write the onboarding guide", "done": true },
+  { "id": 4, "title": "Fix the CSV export encoding", "done": false },
+  { "id": 5, "title": "Add dark mode", "done": true }
+]

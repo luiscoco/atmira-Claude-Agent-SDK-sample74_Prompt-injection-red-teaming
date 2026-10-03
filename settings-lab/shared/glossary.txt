@@ -1,0 +1,3 @@
+Shared glossary (outside the cwd):
+- SDD: Spec-Driven Development
+- SDK: Software Development Kit

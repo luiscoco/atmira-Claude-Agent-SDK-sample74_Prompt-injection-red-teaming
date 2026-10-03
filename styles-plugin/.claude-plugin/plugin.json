@@ -1,0 +1,5 @@
+{
+  "name": "acme",
+  "version": "1.0.0",
+  "description": "Concept 34: a plugin that ships a company output style (acme:House) and forces it with force-for-plugin."
+}

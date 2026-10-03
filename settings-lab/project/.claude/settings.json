@@ -1,0 +1,9 @@
+{
+  "env": {
+    "LAB_LAYER": "project",
+    "LAB_PROJECT_NOTE": "set in .claude/settings.json"
+  },
+  "permissions": {
+    "deny": ["Read(./secret.txt)"]
+  }
+}

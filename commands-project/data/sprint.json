@@ -1,0 +1,9 @@
+{
+  "sprint": "Sprint 14",
+  "items": [
+    { "title": "Login page", "status": "done" },
+    { "title": "Payments API", "status": "blocked" },
+    { "title": "Onboarding guide", "status": "done" },
+    { "title": "CSV export", "status": "in progress" }
+  ]
+}

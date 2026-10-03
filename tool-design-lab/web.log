@@ -1,0 +1,11 @@
+14:10:13 [vite] (client) Re-optimizing dependencies because vite config has changed
+
+  VITE v8.3.0  ready in 708 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+14:20:23 [vite] (client) hmr update /src/App.tsx
+14:20:23 [vite] (client) hmr update /src/styles.css
+14:20:32 [vite] (client) page reload dist/index.html
+14:20:32 [vite] (client) page reload dist/index.html

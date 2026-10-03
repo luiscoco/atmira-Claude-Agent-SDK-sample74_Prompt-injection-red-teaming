@@ -1,0 +1,5 @@
+{
+  "name": "broken",
+  "version": "0.1.0",
+  "description": "A plugin whose manifest is invalid on purpose: the trailing comma makes it bad JSON.",
+}

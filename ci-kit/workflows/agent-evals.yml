@@ -1,0 +1,41 @@
+# Lesson 52: copy to .github/workflows/agent-evals.yml when ready to run paid model evals.
+# Manual dispatch keeps model calls explicit. Commit a reviewed baseline before comparing changes.
+name: agent-evals
+on:
+  workflow_dispatch:
+    inputs:
+      variant:
+        description: Prompt variant to compare
+        type: choice
+        options: [baseline, no-act-now, cold-tone, reassure, fix-findings]
+        default: baseline
+permissions:
+  contents: read
+concurrency:
+  group: agent-evals-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run test:offline
+      - name: Compare against committed baseline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude-evals
+          EVAL_VARIANT: ${{ inputs.variant }}
+        run: npm run eval -- --variant "$EVAL_VARIANT" --trials 3 --judge sonnet
+      - name: Preserve reports even on regression
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-eval-reports
+          path: eval-lab/runs/*.json
+          if-no-files-found: ignore

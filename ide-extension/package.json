@@ -1,0 +1,13 @@
+{
+  "name": "lesson69-agent-panel",
+  "displayName": "Lesson 69 Agent Panel",
+  "description": "Embed the Claude Agent SDK in a trusted VS Code extension host.",
+  "version": "0.0.1",
+  "publisher": "sdk-lessons",
+  "engines": { "vscode": "^1.100.0" },
+  "main": "./extension.cjs",
+  "extensionKind": ["workspace"],
+  "capabilities": { "untrustedWorkspaces": { "supported": false, "description": "The agent launches a Node subprocess and sends selected text to the model." }, "virtualWorkspaces": false },
+  "contributes": { "commands": [{ "command": "lesson69.openPanel", "title": "Lesson 69: Open Agent Panel" }] },
+  "dependencies": { "@anthropic-ai/claude-agent-sdk": "0.3.281", "zod": "^4.6.5" }
+}

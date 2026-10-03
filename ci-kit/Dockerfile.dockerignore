@@ -1,0 +1,7 @@
+# BuildKit reads <Dockerfile>.dockerignore next to the Dockerfile (here: ci-kit/Dockerfile). Keep secrets, host-built binaries and lab folders out of the build context.
+**/node_modules
+**/.env
+**/.env.*
+**/*-lab
+dist
+.git

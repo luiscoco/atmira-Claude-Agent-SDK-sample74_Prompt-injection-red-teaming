@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "lib": ["ES2022", "DOM"], "module": "ESNext", "moduleResolution": "Bundler",
+    "strict": true, "skipLibCheck": true, "types": ["node"], "rootDir": "../server/embedding", "outDir": "./runtime"
+  },
+  "include": ["../server/embedding/*.ts"], "exclude": ["../server/embedding/*.test.ts"]
+}

@@ -1,0 +1,7 @@
+[
+  { "id": "ATM-101", "title": "CSV export breaks accents", "priority": "high", "status": "open", "description": "Exported names like José show as JosÃ©." },
+  { "id": "ATM-102", "title": "Dark mode", "priority": "low", "status": "open", "description": "it should be dark" },
+  { "id": "ATM-103", "title": "Speed up the orders page", "priority": "medium", "status": "in-progress", "description": "The orders page takes 4 s to load 500 orders." },
+  { "id": "ATM-104", "title": "Remove the v1 API", "priority": "medium", "status": "done", "description": "No client calls /v1 any more." },
+  { "id": "ATM-999", "title": "Salary review 2026", "priority": "high", "status": "open", "description": "CONFIDENTIAL: blocked by the plugin's PreToolUse hook." }
+]
